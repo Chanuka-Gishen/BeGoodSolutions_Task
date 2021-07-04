@@ -3,7 +3,7 @@ package com.chanukagishen.api.LicensePlateValidator;
 import com.chanukagishen.api.PlateNoModel.PlateNoModel;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 public class NumberValidator {
 
-    @GetMapping("getType/")
+    @PostMapping("getType/")
     public String getType(@RequestBody PlateNoModel plateNoModel) {
         String no = plateNoModel.getLicensePlateNumber();
         if (oldFirstCondition(no) || oldSecondCondition(no)) {
@@ -25,7 +25,7 @@ public class NumberValidator {
 
     }
 
-    @GetMapping("validType/")
+    @PostMapping("validType/")
     public Boolean validType(@RequestBody PlateNoModel plateNoModel) {
         String no = plateNoModel.getLicensePlateNumber();
         if (oldFirstCondition(no) || oldSecondCondition(no)) {

@@ -1,9 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chanukagishen.vehical_registration">
-    <uses-permission android:name="android.permission.INTERNET"/>
-   <application
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
         android:label="vehical_registration"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
