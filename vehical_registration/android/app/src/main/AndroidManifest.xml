@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chanukagishen.vehical_registration">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="vehical_registration"
         android:icon="@mipmap/ic_launcher">

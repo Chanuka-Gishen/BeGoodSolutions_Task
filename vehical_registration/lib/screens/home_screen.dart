@@ -8,9 +8,7 @@ class HomeScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text("Home Page"),
-        ),
+        title: Text("Home Page")
       ),
       body: Container(
         padding: EdgeInsets.all(20),
@@ -30,7 +28,7 @@ class HomeScreen extends StatelessWidget{
               width: double.infinity,
               child:ElevatedButton(
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> RegisterVehicle()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Register()));
                   },
                   child: Text("Register A Vehicle")),
             ),
