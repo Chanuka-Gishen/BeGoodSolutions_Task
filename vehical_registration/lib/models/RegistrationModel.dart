@@ -1,31 +1,41 @@
-
+// To parse this JSON data, do
+//
+//     final registrationModel = registrationModelFromJson(jsonString);
 
 import 'dart:convert';
 
-RegistrationModel employeeModelJson(String str) =>
-    RegistrationModel.fromJson(json.decode(str));
+List<RegistrationModel> registrationModelFromJson(String str) => List<RegistrationModel>.from(json.decode(str).map((x) => RegistrationModel.fromJson(x)));
 
-String employeeModelToJson(RegistrationModel data) => json.encode(data.toJson());
+String registrationModelToJson(List<RegistrationModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class RegistrationModel{
+class RegistrationModel {
+  RegistrationModel({
+    this.id,
+    this.ownerName,
+    this.licensePlate,
+    this.ownerNic,
+    this.vehicalType,
+  });
+
   int id;
-  String name;
+  String ownerName;
   String licensePlate;
-  String idNo;
-  String vehicleType;
-
-  RegistrationModel({this.id, this.name, this.licensePlate, this.idNo, this.vehicleType});
+  String ownerNic;
+  String vehicalType;
 
   factory RegistrationModel.fromJson(Map<String, dynamic> json) => RegistrationModel(
-      id: json["id"], name: json["ownerName"], licensePlate: json["licensePlate"], idNo: json["ownerNic"], vehicleType: json["vehicalType"]);
+    id: json["id"],
+    ownerName: json["ownerName"],
+    licensePlate: json["licensePlate"],
+    ownerNic: json["ownerNic"],
+    vehicalType: json["vehicalType"],
+  );
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    "ownerName": name,
-    "licensePlate":licensePlate,
-    "ownerNic":idNo,
-    "vehicalType":vehicleType,
-
+    "id": id,
+    "ownerName": ownerName,
+    "licensePlate": licensePlate,
+    "ownerNic": ownerNic,
+    "vehicalType": vehicalType,
   };
-
 }

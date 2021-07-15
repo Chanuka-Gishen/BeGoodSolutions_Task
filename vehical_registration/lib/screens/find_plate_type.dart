@@ -14,7 +14,7 @@ class LicensePlateType extends StatefulWidget{
 // ignore: missing_return
 Future <LicensePlateModel> findType(String licensePlateNo) async{
   //var url = Uri.parse("http://localhost:8080/getType/");
-  var response = await http.post(Uri.parse("http://localhost:8080/getType/"),
+  var response = await http.post(Uri.parse("http://192.168.1.26:8080/getType/"),
       headers: <String, String>{"Content-Type": "application/json"},
       body: jsonEncode(<String, String>{
         "licensePlate": licensePlateNo}));
@@ -22,7 +22,7 @@ Future <LicensePlateModel> findType(String licensePlateNo) async{
   if (response.statusCode == 200) {
     return LicensePlateModel.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception('Failed to load Api Request');
+    print('Failed to load Api Request');
   }
 }
 

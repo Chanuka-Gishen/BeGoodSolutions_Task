@@ -1,63 +1,86 @@
 package com.chanukagishen.api.Model;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
 public class RegistrationModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public String ownerName;
-    public String licensePlate;
-    public String ownerNic;
-    public String vehicalType;
+    @NotBlank
+    private String title;
 
-    public RegistrationModel() {
+    @NotBlank
+    private String content;
+
+    @Column(nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date createdAt;
+
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
+    private Date updatedAt;
+
+    public Long getId() {
+        return id;
     }
 
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getOwnerName() {
-        return this.ownerName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setOwnerName(String name) {
-        this.ownerName = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getLicensePlate() {
-        return this.licensePlate;
+    public String getContent() {
+        return content;
     }
 
-    public void setLicensePlate(String no) {
-        this.licensePlate = no;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getOwnerNic() {
-        return this.ownerNic;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setOwnerNic(String nic) {
-        this.ownerNic = nic;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getVehicalType() {
-        return this.vehicalType;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void getVehicalType(String type) {
-        this.vehicalType = type;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 }

@@ -29,10 +29,10 @@ class ViewRegistrationsState extends State<ViewRegistrations>{
     for (var r in jsonData){
       RegistrationModel registrationModel = new RegistrationModel();
       registrationModel.id = r["id"];
-      registrationModel.name = r["ownerName"];
+      registrationModel.ownerName = r["ownerName"];
       registrationModel.licensePlate = r["licensePlate"];
-      registrationModel.idNo = r["ownerNic"];
-      registrationModel.vehicleType = r["vehicalType"];
+      registrationModel.ownerNic = r["ownerNic"];
+      registrationModel.vehicalType = r["vehicalType"];
       detailsList.add(registrationModel);
     }
 

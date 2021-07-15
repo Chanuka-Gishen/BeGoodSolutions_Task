@@ -25,7 +25,7 @@ class RemoveRegistration extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(model.name),
+        title: Text(model.ownerName),
         actions: <Widget>[
           IconButton(
               icon: Icon(
@@ -39,16 +39,16 @@ class RemoveRegistration extends StatelessWidget{
       body: Container(
         child: Text('Owner Name' +
             ' ' +
-            model.name +
+            model.ownerName +
             ' ' +
             'License Plate' +
             model.licensePlate +
             ' ' +
             'Owner NIC' +
-            model.idNo +
+            model.ownerNic +
             ' ' +
             'Vehicle Type' +
-            model.vehicleType
+            model.vehicalType
         ),
       ),
       floatingActionButton: FloatingActionButton(
